@@ -1,0 +1,27 @@
+body{margin:0;padding:15px 15px;font-size: 11px;font-family: tahoma,verdana,sans-serif;background:#047 repeat-x fixed;color:#222;}
+img { margin-left:5px; border:0px;}
+h1{color:#FFFFFF; font-size:22px; border-bottom: 1px dotted; border-top: 1px dotted;padding:5px;}
+.center{margin-left:auto;margin-right:auto;text-align:center;}
+.clear {clear:both;}
+.red{color:red}
+.white{color:white}
+.right{float:right}
+.left {float:left;}
+.box{width:49%; border:1px solid #8898BF; background-color: #FFFFFF;margin-left:auto;margin-right:auto;}
+.box_top{background-color:#A8D3FF; font-size:1px; height:8px; border-bottom:1px solid #8898BF;}
+.box_img{margin:5px; margin-top:5px}
+.box_header{font: 13pt Verdana; font-weight:bold; padding:5px; border-bottom:1px solid #AAAAAA;}
+.box_content{font-size:9pt; padding:5px ;height:380px;}
+a.btn {display: block; font-size:11px; font-weight: bold; text-decoration: none; color: #005FA9; width: 250px; height: 20px; background-color: #FFFFEE; padding-top: 3px; text-align: center; margin-left: auto; margin-right: auto;}
+a.btn:visited {display: block; font-size:11px; font-weight: bold; text-decoration: none; color: #005FA9; width: 250px; height: 20px; background-color: #FFFFEE; padding-top: 3px; text-align: center; margin-left: auto; margin-right: auto;}
+a.btn:hover {display: block;  background-color: #DDEEFF; font-size:11px; font-weight: bold; }
+a.btn_c {border-width: 1px; border-style: solid; border-color: #005FA9; border-bottom:none; border-top:none; }
+a.btn_t{border-width: 1px; border-style: solid; border-color: #005FA9; border-bottom:none;}
+a.btn_b{border-width: 1px; border-style: solid; border-color: #005FA9; border-top:none; }
+#footer{font:Arial; font-weight:bold; font-size:15px;}
+#footer a{color:red;   text-decoration: none;} 
+#footer a:hover { border-bottom:1px dashed;}
+#valid {padding: 3px;border-bottom: 1px solid #8898BF;border-left: 1px solid #8898BF;border-right: 1px solid #8898BF}
+#lang {padding: 3px;border-top: 1px solid #8898BF;border-left: 1px solid #8898BF;border-right: 1px solid #8898BF;}
+#mysql_red{border: 1px solid;border-color:red;background-color:#FFCCCC;width: 330px; padding:2px; text-align:center; font-weight:bold;}
+#mysql_green{border: 1px solid;border-color:green;background-color:#CCFFCC;width: 270px; padding:2px; text-align:center; }
