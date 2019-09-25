@@ -1,3 +1,12 @@
+<?php
+include "UsuarioDAO.php";
+
+$usuarioDAO = new UsuarioDAO();
+$lista = $usuarioDAO->buscar();
+
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,27 +78,33 @@
 				<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modalnovo"><i class="fas fa-user-plus"></i>  Novo Usúario</button>
 
 				<table class="table table-dark">
-					<thead>
-						<tr>
-							<th scope="col">#</th>
-							<th scope="col">Nome</th>
-							<th scope="col">Email</th>
-							<th scope="col">Ações</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<th scope="row">1</th>
-							<td>João</td>
-							<td>joão@etecia.com.br</td>
-							<td>							
-								<button type="button" class="btn btn-danger"><i class="fas fa-trash-alt"></i></button>
-								<button type="button" class="btn btn-warning"><i class="fas fa-user-edit"></i></button>
-								<button type="button" class="btn btn-success"><i class="fas fa-key"></i></button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+				<tr>
+					<th>#</th>
+					<th>Nome</th>
+					<th>E-mail</th>
+					<th>Ações</th>
+				</tr>
+				<?php foreach($lista as $usuarios): ?>
+				<tr>
+					<td><?= $usuarios->id_usuarios ?></td>
+					<td><?= $usuarios->nome ?></td>
+					<td><?= $usuarios->email ?></td>
+					<td>
+					<td>
+						<a type="button" class="btn btn-danger" href="UsuariosController.php?acao=apagar&id=<?=$usuarios->id_usuarios ?>">
+							<i class="fas fa-trash-alt">
+							</i></a>
+						<a type="button" class="btn btn-warning">
+							<i class="fas fa-edit"> 
+							</i>
+						</a>
+						<a type="button" class="btn btn-primary">
+						<i class="fas fa-key"></i>
+					</a>
+					</td>
+				</tr>
+				<?php endforeach ?>
+			</table>
 				
 			</div>
 		</div>
@@ -100,7 +115,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<form action= "UsuariosController.php" method="POST">
+					<form action= "UsuariosController.php?acao=inserir" method="POST">
 						<div class="form-group">
 							<div class="form-group">
 								<label for="exampleInputPassword1">Nome</label>
@@ -118,7 +133,7 @@
 							<input type="checkbox" class="form-check-input" id="exampleCheck1">
 							<label class="form-check-label" for="exampleCheck1">Clique em mim</label>
 						</div>
-						<button type="submit" class="btn btn-primary">Enviar</button>
+						<button type="submit" class="btn btn-primary" >Enviar</button>
 				</div>
 			</div>
 		</div>
