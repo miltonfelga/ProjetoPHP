@@ -108,43 +108,6 @@ $lista = $usuarioDAO->buscar();
 				
 			</div>
 
-
-				<div class="col-10">
-				<h3> Questões </h3>
-				<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modalnovaquestao"><i class="far fa-question-circle"></i>  Nova Questão</button>
-
-				<table class="table table-dark">
-				<tr>
-					<th>#</th>
-					<th>Titulo</th>
-					<th>Enunciado</th>
-					<th>Ações</th>
-				</tr>
-				
-				<tr>
-					<td>1</td>
-					<td>Complete os espaços</td>
-					<td>Complete os espaços faltando com codigos</td>
-					<td>
-					<td>
-						<a type="button" class="btn btn-danger" href="#">
-							<i class="fas fa-trash-alt">
-							</i></a>
-						<a type="button" class="btn btn-warning">
-							<i class="fas fa-edit"> 
-							</i>
-						</a>
-						<a type="button" class="btn btn-primary " data-toggle="modal" data-target="#"  data-id="#">
-						<i class="fas fa-key"></i>
-					</a>
-					</td>
-				</tr>
-				
-			</table>
-
-			</div>
-
-
 		</div>
 	</div>
 
@@ -197,35 +160,6 @@ $lista = $usuarioDAO->buscar();
 </div>
 </div>
 </form>
-
-
-
-<!-- ModalInserirQuestão -->
-	<div class="modal fade" id="modalnovaquestao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-<form action = "UsuariosController.php?acaoq=inserirq">
-  <div class="form-group">
-    <label for="exampleInputEmail1">Titulo</label>
-    <input type="text" class="form-control" id="titulo" placeholder="Titulo">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Enunciado</label>
-    <input type="text" class="form-control" id="enunciado" placeholder="Enunciado">
-  </div>
-  <div class="form-group form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Clique em mim</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Enviar</button>
-  </div>
-			</div>
-		</div>
-	</div>
-</form>
-
-
 
 
 	</body>
