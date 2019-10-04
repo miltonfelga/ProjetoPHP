@@ -29,4 +29,33 @@ switch ($acao){
 	default:
 		break;
 }
+
+$acao = $_GET["acaoq"];
+
+switch ($acaoq){
+    case 'inserirq':
+		$questoes = new UsuarioDAO();
+		$questoes->titulo = $_POST["titulo"];
+		$questoes->enunciado = $_POST["enunciado"];
+		$questoes->inserir();
+		break;
+
+	case 'apagarq':
+		$questoes = new UsuarioDAO();
+		$id = $_GET["id"];
+		$questoes->apagar($id);
+		break;
+
+	case 'trocarq':
+		$questoes = new UsuarioDAO();
+		$id = $_POST["id"];
+		$titulo = $_POST["titulo"];
+		$questoes->trocar($id, $senha);
+		break;
+
+	default:
+		break;
+}
+
+
 ?>

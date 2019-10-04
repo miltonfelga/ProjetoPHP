@@ -5,6 +5,9 @@ class UsuarioDAO{
 	public $email;
 	public $senha;
 
+	public $titulo;
+	public $enunciado;
+
 	private $con;
 
 	function __construct(){
@@ -47,7 +50,28 @@ class UsuarioDAO{
 
 	}
 
+
+
+	public function inserirq(){
+		$con = mysqli_connect("localhost:3307","root","","projetopw");
+		$sql = "INSERT INTO questoes VALUES (0,'$this->titulo','$this->enunciado')";
+		$rs = $this->con->query($sql);
+		if($rs)
+			header ("Location:usuarios.php");
+		else 
+			echo $this->con->error;
+	}
+
+	public function buscarq(){
+		$con = mysqli_connect("localhost:3307", "root", "", "projetopw");
+		$sql = "SELECT * FROM questoes";
+		$rs = $this->con->query($sql);
+		$listaDeQuestoes = array();
+		while ($linha = $rs->fetch_object()){
+			$listaDeQuestoes[] = $linha;
+		}
+		return $listaDeQuestoes;
+	}
+
 }
-
-
 ?>
