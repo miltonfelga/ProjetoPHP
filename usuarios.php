@@ -19,7 +19,6 @@ include "menulateral.php";
 </head>
 <body>
 
-
 <div class="col-10">
 	<h3> Usúarios </h3>
 	<button type="button" class="btn btn-dark" data-toggle="modal" data-target="#modalnovo"><i class="fas fa-user-plus"></i>  Novo Usúario</button>
@@ -41,13 +40,11 @@ include "menulateral.php";
 						<a type="button" class="btn btn-danger" href="UsuariosController.php?acao=apagar&id=<?=$usuarios->id_usuarios ?>">
 							<i class="fas fa-trash-alt">
 							</i></a>
-							<a type="button" class="btn btn-warning">
-								<i class="fas fa-edit"> 
-								</i>
-							</a>
-							<a type="button" class="btn btn-primary alterar-senha" data-toggle="modal" data-target="#modalsenha"  data-id="<?=$usuarios->id_usuarios?>">
-								<i class="fas fa-key"></i>
-							</a>
+						<a type="button" class="btn btn-warning">
+							<i class="fas fa-edit"> 
+							</i></a>
+						<a type="button" class="btn btn-primary alterar-senha" data-toggle="modal" data-target="#modalsenha"  data-id="<?=$usuarios->id_usuarios?>">
+								<i class="fas fa-key"></i></a>
 						</td>
 					</tr>
 				<?php endforeach ?>

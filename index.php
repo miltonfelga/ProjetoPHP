@@ -1,11 +1,18 @@
 <?php
-	if (!empty($_SERVER['HTTPS']) && ('on' == $_SERVER['HTTPS'])) {
-		$uri = 'https://';
-	} else {
-		$uri = 'http://';
-	}
-	$uri .= $_SERVER['HTTP_HOST'];
-	header('Location: '.$uri.'/dashboard/');
-	exit;
+switch ($_SERVER["PATH_INFO"]) {
+	case "/usuarios":
+	case "/usuario":
+		require "usuarios.php";
+		break;
+
+	case "/questoes":
+	case "/questao":
+		require "questoes.php";
+		break;
+	
+	default:
+		echo "Erro 404 - Pagina não encontrada";
+		break;
+}
+
 ?>
-Something is wrong with the XAMPP installation :-(
