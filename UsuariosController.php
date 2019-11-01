@@ -25,6 +25,13 @@ switch ($acao){
 		$senha = $_POST["senha"];
 		$usuarios->trocarsenha($id, $senha);
 		break;
+case 'editar':
+		$usuarios = new UsuarioDAO();
+		$id = $_POST["id"];
+		$nome = $_POST["nome"];
+		$email = $_POST["email"];
+		$usuarios->editar($id, $nome, $email);
+		break;
 
 	default:
 		break;

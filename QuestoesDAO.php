@@ -16,7 +16,7 @@ class QuestoesDAO{
 		$sql = "INSERT INTO questoes VALUES (0,'$this->titulo','$this->enunciado')";
 		$rs = $this->con->query($sql);
 		if($rs)
-			header ("Location:questoes.php");
+			header ("Location:/questoes");
 		else 
 			echo $this->con->error;
 	}
@@ -34,14 +34,14 @@ class QuestoesDAO{
 	public function apagar ($id){
 		$sql = "DELETE FROM questoes WHERE id_questao=$id";
 		$rs = $this->con->query($sql);
-		if ($rs) header("Location:questoes.php");
+		if ($rs) header("Location:/questoes");
 		else echo $this->con->error; 
 	}
 
 	public function editar($id, $titulo, $enunciado){
 		$sql="UPDATE questoes SET titulo='$titulo', enunciado='$enunciado' WHERE id_questao=$id";
 		$rs = $this->con->query($sql);
-		if ($rs) header("Location:questoes.php");
+		if ($rs) header("Location:/questoes");
 		else echo $this->con->error; 
 
 	}

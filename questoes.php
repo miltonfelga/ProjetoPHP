@@ -29,8 +29,8 @@ include "menulateral.php";
 				<table class="table table-dark">
 				<tr>
 					<th>#</th>
-					<th>Titulo</th>
 					<th>Enunciado</th>
+					<th>Tipo</th>
 					<th>Ações</th>
 				</tr>
 				<?php foreach($lista as $questoes): ?>
@@ -43,7 +43,7 @@ include "menulateral.php";
 						<a type="button" class="btn btn-danger" href="QuestoesController.php?acao1=apagar&id=<?=$questoes->id_questao ?>"><i class="fas fa-trash-alt"></i></a>
 						<a type="button" class="btn btn-warning alterar-dado" data-toggle="modal" data-target="#modaleditarquestao"  data-id="<?=$questoes->id_questao?>"><i class="fas fa-edit"></i></a>
 						<a type="button" class="btn btn-primary" data-toggle="modal" data-target="#"  data-id="#">
-						<i class="fas fa-key"></i></a>
+						<i class="fas fa-list"></i></a>
 					</td>
 				</tr>
 				<?php endforeach ?>
@@ -58,11 +58,11 @@ include "menulateral.php";
 				<div class="modal-header">
 <form action = "QuestoesController.php?acao1=inserir" method="POST">
   <div class="form-group">
-    <label for="exampleInputEmail1">Titulo</label>
+    <label for="exampleInputEmail1">Enunciado</label>
     <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Titulo">
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Enunciado</label>
+    <label for="exampleInputPassword1">Tipo</label>
     <input type="text" name="enunciado" class="form-control" id="enunciado" placeholder="Enunciado">
   </div>
   <div class="form-group form-check">
@@ -85,11 +85,11 @@ include "menulateral.php";
 <form action = "QuestoesController.php?acao1=editar" method="POST">
 	<input type="hidden" name="id" id="campo-id">
   <div class="form-group">
-    <label for="exampleInputEmail1">Titulo</label>
+    <label for="exampleInputEmail1">Enunciado</label>
     <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Titulo">
   </div>
   <div class="form-group">
-    <label for="exampleInputPassword1">Enunciado</label>
+    <label for="exampleInputPassword1">Tipo</label>
     <input type="text" name="enunciado" class="form-control" id="enunciado" placeholder="Enunciado">
   </div>
   <div class="form-group form-check">

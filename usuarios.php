@@ -40,9 +40,8 @@ include "menulateral.php";
 						<a type="button" class="btn btn-danger" href="UsuariosController.php?acao=apagar&id=<?=$usuarios->id_usuarios ?>">
 							<i class="fas fa-trash-alt">
 							</i></a>
-						<a type="button" class="btn btn-warning">
-							<i class="fas fa-edit"> 
-							</i></a>
+						<a type="button" class="btn btn-warning alterar-dado" data-toggle="modal" data-target="#modaleditarusuario"  data-id="<?=$usuarios->id_usuarios?>"><i class="fas fa-edit"></i></a>
+
 						<a type="button" class="btn btn-primary alterar-senha" data-toggle="modal" data-target="#modalsenha"  data-id="<?=$usuarios->id_usuarios?>">
 								<i class="fas fa-key"></i></a>
 						</td>
@@ -105,6 +104,33 @@ include "menulateral.php";
 	</div>
 </form>
 
+<!-- ModalEditar -->
+<div class="modal fade" id="modaleditarusuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+<form action = "UsuariosController.php?acao=editar" method="POST">
+	<input type="hidden" name="id" id="campo-id1">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Nome</label>
+    <input type="text" name="nome" class="form-control" id="Nome" placeholder="Nome">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Email</label>
+    <input type="text" name="email" class="form-control" id="email" placeholder="Email">
+  </div>
+  <div class="form-group form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+    <label class="form-check-label" for="exampleCheck1">Clique em mim</label>
+  </div>
+  <button type="submit" class="btn btn-primary">Enviar</button>
+  </div>
+			</div>
+		</div>
+	</div>
+</form>
+<!-- ModalEditar -->
+
 
 </body>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -114,6 +140,11 @@ include "menulateral.php";
 	var botao = document.querySelector(".alterar-senha");
 	botao.addEventListener("click", function(){
 		var campo = document.querySelector("#campo-id");
+		campo.value = botao.getAttribute("data-id");
+	});
+	var botao = document.querySelector(".alterar-dado");
+	botao.addEventListener("click", function(){
+		var campo = document.querySelector("#campo-id1");
 		campo.value = botao.getAttribute("data-id");
 	});
 </script>

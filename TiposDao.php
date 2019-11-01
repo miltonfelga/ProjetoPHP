@@ -1,9 +1,8 @@
 <?php
 
 class UsuarioDAO{
-	public $nome;
-	public $email;
-	public $senha;
+	public $tipo;
+	
 
 	private $con;
 
@@ -43,13 +42,7 @@ class UsuarioDAO{
 		if ($rs) header("Location:/usuarios");
 		else echo $this->con->error; 
 	}
-	
-	public function editar($id, $nome, $email){
-		$sql="UPDATE usuarios SET nome='$nome', email='$email' WHERE id_usuarios=$id";
-		$rs = $this->con->query($sql);
-		if ($rs) header("Location:/usuarios");
-		else echo $this->con->error; 
-} 
 
-} 
+
+}
 ?>
