@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: 08-Nov-2019 às 01:41
--- Versão do servidor: 10.1.37-MariaDB
--- versão do PHP: 7.3.1
+-- Tempo de geração: 08-Nov-2019 às 04:46
+-- Versão do servidor: 10.4.6-MariaDB
+-- versão do PHP: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `projetopw`
+-- Banco de dados: `projetopw`
 --
 
 -- --------------------------------------------------------
@@ -30,10 +30,22 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `alternativas` (
   `idAlternativa` int(11) NOT NULL,
-  `texto` varchar(200) NOT NULL,
   `idQuestao` int(11) NOT NULL,
+  `texto` varchar(200) NOT NULL,
   `correta` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `alternativas`
+--
+
+INSERT INTO `alternativas` (`idAlternativa`, `idQuestao`, `texto`, `correta`) VALUES
+(14, 6, 'Belem', 1),
+(15, 6, 'Parana', 0),
+(16, 6, 'fernando de noronha', 0),
+(17, 7, '2', 1),
+(18, 7, '11', 0),
+(19, 7, '3', 0);
 
 -- --------------------------------------------------------
 
@@ -42,17 +54,18 @@ CREATE TABLE `alternativas` (
 --
 
 CREATE TABLE `questoes` (
-  `id_questao` int(20) NOT NULL,
-  `tipo` text NOT NULL,
-  `enunciado` text NOT NULL
+  `idQuestao` int(11) NOT NULL,
+  `enunciado` varchar(200) NOT NULL,
+  `tipo` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `questoes`
 --
 
-INSERT INTO `questoes` (`id_questao`, `tipo`, `enunciado`) VALUES
-(6, 'multipla escolha', 'Quem descobriu o eua?');
+INSERT INTO `questoes` (`idQuestao`, `enunciado`, `tipo`) VALUES
+(6, 'Qual a capital do ParÃ¡', 'escolha'),
+(7, 'Quanto Ã© 1+1', 'escolha');
 
 -- --------------------------------------------------------
 
@@ -61,74 +74,74 @@ INSERT INTO `questoes` (`id_questao`, `tipo`, `enunciado`) VALUES
 --
 
 CREATE TABLE `usuarios` (
-  `id_usuarios` int(11) NOT NULL,
+  `idUsuario` int(11) NOT NULL,
   `nome` varchar(200) NOT NULL,
   `email` varchar(200) NOT NULL,
   `senha` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id_usuarios`, `nome`, `email`, `senha`) VALUES
-(5, '123', '123@123.com', '81dc9bdb52d04dc20036dbd8313ed055'),
-(6, 'felga', 'milton@gmail.com', '202cb962ac59075b964b07152d234b70');
+INSERT INTO `usuarios` (`idUsuario`, `nome`, `email`, `senha`) VALUES
+(9, 'milton', 'milton@gmail.com', '202cb962ac59075b964b07152d234b70'),
+(10, 'felga', 'felga@gmail.com', '202cb962ac59075b964b07152d234b70');
 
 --
--- Indexes for dumped tables
+-- Índices para tabelas despejadas
 --
 
 --
--- Indexes for table `alternativas`
+-- Índices para tabela `alternativas`
 --
 ALTER TABLE `alternativas`
   ADD PRIMARY KEY (`idAlternativa`),
   ADD KEY `alternativa_questao` (`idQuestao`);
 
 --
--- Indexes for table `questoes`
+-- Índices para tabela `questoes`
 --
 ALTER TABLE `questoes`
-  ADD PRIMARY KEY (`id_questao`);
+  ADD PRIMARY KEY (`idQuestao`);
 
 --
--- Indexes for table `usuarios`
+-- Índices para tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id_usuarios`);
+  ADD PRIMARY KEY (`idUsuario`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT for table `alternativas`
+-- AUTO_INCREMENT de tabela `alternativas`
 --
 ALTER TABLE `alternativas`
-  MODIFY `idAlternativa` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idAlternativa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT for table `questoes`
+-- AUTO_INCREMENT de tabela `questoes`
 --
 ALTER TABLE `questoes`
-  MODIFY `id_questao` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idQuestao` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `usuarios`
+-- AUTO_INCREMENT de tabela `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id_usuarios` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- Constraints for dumped tables
+-- Restrições para despejos de tabelas
 --
 
 --
 -- Limitadores para a tabela `alternativas`
 --
 ALTER TABLE `alternativas`
-  ADD CONSTRAINT `alternativa_questao` FOREIGN KEY (`idQuestao`) REFERENCES `questoes` (`id_questao`) ON DELETE CASCADE;
+  ADD CONSTRAINT `alternativa_questao` FOREIGN KEY (`idQuestao`) REFERENCES `questoes` (`idQuestao`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -1,34 +1,37 @@
-<?php
+<?php 
 
 include "QuestoesDAO.php";
 
-$acao1 = $_GET["acao1"];
+$acao = $_GET["acao"];
 
-switch ($acao1){
-
-    case 'inserir':
-		$questoes = new QuestoesDAO();
-		$questoes->tipo = $_POST["tipo"];
-		$questoes->enunciado = $_POST["enunciado"];
-		$questoes->inserir();
+switch ($acao) {
+	case 'inserir':
+		$questao = new QuestoesDAO();
+		$questao->enunciado = $_POST["enunciado"];
+		$questao->tipo = $_POST["tipo"];
+		$questao->inserir();
 		break;
 
 	case 'apagar':
-		$questoes = new QuestoesDAO();
+		$questao = new QuestoesDAO();
 		$id = $_GET["id"];
-		$questoes->apagar($id);
+		$questao->apagar($id);
 		break;
 
 	case 'editar':
-		$questoes = new QuestoesDAO();
-		$id = $_POST["id"];
-		$tipo = $_POST["tipo"];
-		$enunciado = $_POST["enunciado"];
-		$questoes->editar($id, $tipo, $enunciado);
+		$questao = new QuestoesDAO();
+		$questao->id = $_POST["id"];
+		$questao->enunciado = $_POST["enunciado"];
+		$questao->tipo = $_POST["tipo"];
+		$questao->editar();
 		break;
 
 	default:
+		echo "acao não reconhecida";
 		break;
 }
+
+
+
 
 ?>

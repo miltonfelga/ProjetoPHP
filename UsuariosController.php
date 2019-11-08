@@ -1,49 +1,52 @@
-<?php
+<?php 
 
 include "UsuarioDAO.php";
 
 $acao = $_GET["acao"];
 
-switch ($acao){
-    case 'inserir':
-		$usuarios = new UsuarioDAO();
-		$usuarios->nome = $_POST["nome"];
-		$usuarios->email = $_POST["email"];
-		$usuarios->senha = $_POST["senha"];
-		$usuarios->inserir();
+switch ($acao) {
+	case 'inserir':
+		$usuario = new UsuarioDAO();
+		$usuario->nome = $_POST["nome"];
+		$usuario->email = $_POST["email"];
+		$usuario->senha = $_POST["senha"];
+		$usuario->inserir();
 		break;
 
 	case 'apagar':
-		$usuarios = new UsuarioDAO();
+		$usuario = new UsuarioDAO();
 		$id = $_GET["id"];
-		$usuarios->apagar($id);
+		$usuario->apagar($id);
 		break;
-
-	case 'trocarsenha':
-		$usuarios = new UsuarioDAO();
+	
+	case 'senha':
+		$usuario = new UsuarioDAO();
 		$id = $_POST["id"];
 		$senha = $_POST["senha"];
-		$usuarios->trocarsenha($id, $senha);
+		$usuario->trocarSenha($id, $senha);
 		break;
-		
+
 	case 'editar':
-		$usuarios = new UsuarioDAO();
-		$id = $_POST["id"];
-		$nome = $_POST["nome"];
-		$email = $_POST["email"];
-		$usuarios->editar($id, $nome, $email);
+		$usuario = new UsuarioDAO();
+		$usuario->id = $_POST["id"];
+		$usuario->nome = $_POST["nome"];
+		$usuario->email = $_POST["email"];
+		$usuario->editar();
 		break;
 
 	case 'logar':
-		$usuarios = new UsuarioDAO();
-		$usuarios->email = $_POST["email"];
-		$usuarios->senha = $_POST["senha"];
-		$usuarios->editar();
+		$usuario = new UsuarioDAO();
+		$usuario->email = $_POST["email"];
+		$usuario->senha = $_POST["senha"];
+		$usuario->logar();
 		break;
-
 
 	default:
+		echo "acao não reconhecida";
 		break;
 }
+
+
+
 
 ?>
