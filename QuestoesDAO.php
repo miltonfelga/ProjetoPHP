@@ -2,7 +2,7 @@
 
 class QuestoesDAO{
 
-	public $titulo;
+	public $tipo;
 	public $enunciado;
 
 	private $con;
@@ -13,7 +13,7 @@ class QuestoesDAO{
 
 	public function inserir(){
 		$con = mysqli_connect("localhost:3307","root","","projetopw");
-		$sql = "INSERT INTO questoes VALUES (0,'$this->titulo','$this->enunciado')";
+		$sql = "INSERT INTO questoes VALUES (0,'$this->tipo','$this->enunciado')";
 		$rs = $this->con->query($sql);
 		if($rs)
 			header ("Location:/questoes");
@@ -38,12 +38,14 @@ class QuestoesDAO{
 		else echo $this->con->error; 
 	}
 
-	public function editar($id, $titulo, $enunciado){
-		$sql="UPDATE questoes SET titulo='$titulo', enunciado='$enunciado' WHERE id_questao=$id";
+	public function editar($id, $tipo, $enunciado){
+		$sql="UPDATE questoes SET tipo='$tipo', enunciado='$enunciado' WHERE id_questao=$id";
 		$rs = $this->con->query($sql);
 		if ($rs) header("Location:/questoes");
 		else echo $this->con->error; 
 
 	}
+
+
 }
 ?>

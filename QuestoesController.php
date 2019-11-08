@@ -8,7 +8,7 @@ switch ($acao1){
 
     case 'inserir':
 		$questoes = new QuestoesDAO();
-		$questoes->titulo = $_POST["titulo"];
+		$questoes->tipo = $_POST["tipo"];
 		$questoes->enunciado = $_POST["enunciado"];
 		$questoes->inserir();
 		break;
@@ -22,9 +22,9 @@ switch ($acao1){
 	case 'editar':
 		$questoes = new QuestoesDAO();
 		$id = $_POST["id"];
-		$titulo = $_POST["titulo"];
+		$tipo = $_POST["tipo"];
 		$enunciado = $_POST["enunciado"];
-		$questoes->editar($id, $titulo, $enunciado);
+		$questoes->editar($id, $tipo, $enunciado);
 		break;
 
 	default:

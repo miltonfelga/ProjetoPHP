@@ -13,6 +13,12 @@ switch ($acao1){
 		$alternativas->inserir();
 		break;
 
+	case 'apagar':
+		$alternativas = new QuestoesDAO();
+		$id = $_GET["id"];
+		$alternativas->apagar($id);
+		break;
+
 	default:
 		break;
 }

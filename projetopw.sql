@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3307
--- Generation Time: 25-Out-2019 às 02:57
+-- Generation Time: 08-Nov-2019 às 01:41
 -- Versão do servidor: 10.1.37-MariaDB
 -- versão do PHP: 7.3.1
 
@@ -43,7 +43,7 @@ CREATE TABLE `alternativas` (
 
 CREATE TABLE `questoes` (
   `id_questao` int(20) NOT NULL,
-  `titulo` text NOT NULL,
+  `tipo` text NOT NULL,
   `enunciado` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -51,10 +51,8 @@ CREATE TABLE `questoes` (
 -- Extraindo dados da tabela `questoes`
 --
 
-INSERT INTO `questoes` (`id_questao`, `titulo`, `enunciado`) VALUES
-(1, 'Exercicio01', 'bla'),
-(2, 'Exercicio02', 'bla'),
-(3, 'Execicio03', 'bla');
+INSERT INTO `questoes` (`id_questao`, `tipo`, `enunciado`) VALUES
+(6, 'multipla escolha', 'Quem descobriu o eua?');
 
 -- --------------------------------------------------------
 
@@ -74,7 +72,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id_usuarios`, `nome`, `email`, `senha`) VALUES
-(5, 'milton', 'felga@gmail.com', '81dc9bdb52d04dc20036dbd8313ed055'),
+(5, '123', '123@123.com', '81dc9bdb52d04dc20036dbd8313ed055'),
 (6, 'felga', 'milton@gmail.com', '202cb962ac59075b964b07152d234b70');
 
 --
@@ -114,7 +112,7 @@ ALTER TABLE `alternativas`
 -- AUTO_INCREMENT for table `questoes`
 --
 ALTER TABLE `questoes`
-  MODIFY `id_questao` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_questao` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `usuarios`

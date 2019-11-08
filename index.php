@@ -1,4 +1,10 @@
 <?php
+
+if(!isset($_SERVER["PATH_INFO"])){
+	require"login.php";
+	exit();
+}
+
 switch ($_SERVER["PATH_INFO"]) {
 	case "/usuarios":
 	case "/usuario":

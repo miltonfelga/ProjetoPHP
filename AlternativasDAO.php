@@ -20,6 +20,14 @@ class AlternativasDAO{
 		else 
 			echo $this->con->error;
 	}
+
+	public function apagar ($id){
+		$sql = "DELETE FROM alternativas WHERE idAlternativa=$id";
+		$rs = $this->con->query($sql);
+		if ($rs) header("Location:/alternativas");
+		else echo $this->con->error; 
+	}
+
 	public function buscar(){
 		$con = mysqli_connect("localhost:3307", "root", "", "projetopw");
 		$sql = "SELECT * FROM alternativas";

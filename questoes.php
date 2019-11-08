@@ -36,14 +36,16 @@ include "menulateral.php";
 				<?php foreach($lista as $questoes): ?>
 				<tr>
 					<td><?= $questoes->id_questao ?></td>
-					<td><?= $questoes->titulo ?></td>
 					<td><?= $questoes->enunciado ?></td>
-					<td>
+					<td><?= $questoes->tipo ?></td>
+					
 					<td>
 						<a type="button" class="btn btn-danger" href="QuestoesController.php?acao1=apagar&id=<?=$questoes->id_questao ?>"><i class="fas fa-trash-alt"></i></a>
+
 						<a type="button" class="btn btn-warning alterar-dado" data-toggle="modal" data-target="#modaleditarquestao"  data-id="<?=$questoes->id_questao?>"><i class="fas fa-edit"></i></a>
-						<a type="button" class="btn btn-primary" data-toggle="modal" data-target="#"  data-id="#">
-						<i class="fas fa-list"></i></a>
+
+						<a type="button" class="btn btn-primary" href="alternativas?id=<?=$questoes->id_questao ?>"  data-id="<?=$questoes->id_questao?>"><i class="fas fa-list"></i></a>
+
 					</td>
 				</tr>
 				<?php endforeach ?>
@@ -59,11 +61,11 @@ include "menulateral.php";
 <form action = "QuestoesController.php?acao1=inserir" method="POST">
   <div class="form-group">
     <label for="exampleInputEmail1">Enunciado</label>
-    <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Titulo">
+    <input type="text" name="enunciado" class="form-control" id="enunciado" placeholder="Enunciado">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Tipo</label>
-    <input type="text" name="enunciado" class="form-control" id="enunciado" placeholder="Enunciado">
+    <input type="text" name="tipo" class="form-control" id="tipo" placeholder="Tipo">
   </div>
   <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -86,11 +88,11 @@ include "menulateral.php";
 	<input type="hidden" name="id" id="campo-id">
   <div class="form-group">
     <label for="exampleInputEmail1">Enunciado</label>
-    <input type="text" name="titulo" class="form-control" id="titulo" placeholder="Titulo">
+    <input type="text" name="enunciado" class="form-control" id="enunciado" placeholder="Enunciado">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Tipo</label>
-    <input type="text" name="enunciado" class="form-control" id="enunciado" placeholder="Enunciado">
+    <input type="text" name="tipo" class="form-control" id="tipo" placeholder="Tipo">
   </div>
   <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -113,11 +115,11 @@ include "menulateral.php";
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 	<script type="text/javascript">
-					var botao = document.querySelector(".alterar-dado");
-			botao.addEventListener("click", function(){
-				var campo = document.querySelector("#campo-id");
-				campo.value = botao.getAttribute("data-id");
-			});
+	var botao = document.querySelector(".alterar-dado");
+	botao.addEventListener("click", function(){
+		var campo = document.querySelector("#campo-id");
+		campo.value = botao.getAttribute("data-id");
+	});
 	 </script>
 <!-- fim do javascript -->
 </html>

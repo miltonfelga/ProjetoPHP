@@ -1,4 +1,8 @@
 <?php
+
+session_start();
+if(!$_SESSION["logado"]) header("Location: /");
+
 include "UsuarioDAO.php";
 
 $usuarioDAO = new UsuarioDAO();
@@ -35,15 +39,15 @@ include "menulateral.php";
 				<td><?= $usuarios->id_usuarios ?></td>
 				<td><?= $usuarios->nome ?></td>
 				<td><?= $usuarios->email ?></td>
-				<td>
+				
 					<td>
 						<a type="button" class="btn btn-danger" href="UsuariosController.php?acao=apagar&id=<?=$usuarios->id_usuarios ?>">
-							<i class="fas fa-trash-alt">
-							</i></a>
+							<i class="fas fa-trash-alt"></i></a>
+
 						<a type="button" class="btn btn-warning alterar-dado" data-toggle="modal" data-target="#modaleditarusuario"  data-id="<?=$usuarios->id_usuarios?>"><i class="fas fa-edit"></i></a>
 
-						<a type="button" class="btn btn-primary alterar-senha" data-toggle="modal" data-target="#modalsenha"  data-id="<?=$usuarios->id_usuarios?>">
-								<i class="fas fa-key"></i></a>
+						<a type="button" class="btn btn-primary alterar-senha" data-toggle="modal" data-target="#modalsenha"  data-id="<?=$usuarios->id_usuarios?>"><i class="fas fa-key"></i></a>
+						
 						</td>
 					</tr>
 				<?php endforeach ?>
