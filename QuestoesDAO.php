@@ -1,14 +1,14 @@
 <?php 
+require "config.php";
 
 class QuestoesDAO{
 	public $id;
 	public $enunciado;
 	public $tipo;
-
 	private $con;
 
 	function __construct(){
-		$this->con = mysqli_connect("localhost:3307", "root", "", "projetopw");
+		$this->con = mysqli_connect(DB_SERVER ,DB_USER ,DB_PASS ,DB_NAME);
 	}
 
 	public function apagar($id){
@@ -21,7 +21,6 @@ class QuestoesDAO{
 	public function inserir(){
 		$sql = "INSERT INTO questoes VALUES (0, '$this->enunciado', '$this->tipo')";
 		$rs = $this->con->query($sql);
-
 		if ($rs) 
 			header("Location: \questoes");
 		else 
@@ -55,9 +54,8 @@ class QuestoesDAO{
 			$this->enunciado = $linha->enunciado;
 			$this->tipo = $linha->tipo;
 		}
-
 	}
-}
 
+}
 
 ?>

@@ -1,6 +1,9 @@
 <?php 
+require ("verificarlogin.php");
 include "AlternativasDAO.php";
 include "QuestoesDAO.php";
+include "alerta.php";
+
 
 $idQuestao = $_GET["questao"];
 
@@ -23,6 +26,9 @@ include "menu.php";
 </head>
 <body>
 <div class="container">
+
+				<?php mostrarAlerta("success"); ?>
+				<?php mostrarAlerta("danger"); ?>
 	
 	<h2><?= $questoes->enunciado ?></h2>
 

@@ -1,13 +1,13 @@
 <?php
+require "config.php";
 
 class UsuarioDAO{
-	public $tipo;
-	
 
+	public $tipo;
 	private $con;
 
 	function __construct(){
-		$rs = $this->con = mysqli_connect("localhost:3307", "root", "", "projetopw");
+		$this->con = mysqli_connect(DB_SERVER ,DB_USER ,DB_PASS ,DB_NAME);
 	}
 	public function apagar ($id){
 		$sql = "DELETE FROM usuarios WHERE id_usuarios=$id";
@@ -42,7 +42,6 @@ class UsuarioDAO{
 		if ($rs) header("Location:/usuarios");
 		else echo $this->con->error; 
 	}
-
 
 }
 ?>

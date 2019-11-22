@@ -1,5 +1,7 @@
 <?php 
+require ("verificarlogin.php");
 include "QuestoesDAO.php";
+include "alerta.php";
 
 $questoesDAO = new QuestoesDAO();
 $lista = $questoesDAO->buscar();
@@ -16,7 +18,10 @@ include "menu.php";
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-			<div class="col-10">	
+			<div class="col-10">
+
+				<?php mostrarAlerta("success"); ?>
+				<?php mostrarAlerta("danger"); ?>	
 				<h3>Questões</h3>
 				<button class="btn btn-dark" data-toggle="modal" data-target="#modalnovo">
 					<i class="fas fa-question"></i>

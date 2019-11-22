@@ -1,4 +1,5 @@
 <?php 
+require "config.php";
 
 class AlternativasDAO{
 	public $id;
@@ -9,7 +10,7 @@ class AlternativasDAO{
 	private $con;
 
 	function __construct(){
-		$this->con = mysqli_connect("localhost:3307", "root", "", "projetopw");
+		$this->con = mysqli_connect(DB_SERVER ,DB_USER ,DB_PASS ,DB_NAME);
 	}
 
 	public function apagar($id, $idQuestao){

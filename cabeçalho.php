@@ -12,7 +12,7 @@
 				</li>
 
 			</ul>
-<button type="button" class="btn btn-dark" href="\usuario">SAIR</button>
+<a class="btn btn-dark" href="UsuariosController.php?acao=sair">SAIR</a>
 		</div>
 	</nav>
 <!-- fim menu superior -->
