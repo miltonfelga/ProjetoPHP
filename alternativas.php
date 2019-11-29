@@ -25,24 +25,25 @@ include "menu.php";
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 </head>
 <body>
-<div class="container">
+	<div class="container">
 
-				<?php mostrarAlerta("success"); ?>
-				<?php mostrarAlerta("danger"); ?>
-	
-	<h2><?= $questoes->enunciado ?></h2>
+		<?php mostrarAlerta("success"); ?>
+		<?php mostrarAlerta("danger"); ?>
+		
+		<h2><?= $questoes->enunciado ?></h2>
 
-	<ul class="list-group lista-alternativas">
-		<?php foreach ($lista as $alternativa) : ?>
-			<li class="list-group-item d-flex justify-content-between align-items-center">
-				<?= $alternativa->texto ?>
-				<span class="badge">
-					<button class="btn btn-correta "><i class="fas fa-<?= ($alternativa->correta)?'check':'times'?>"></i></button>
-					<a href="AlternativasController.php?acao=apagar&id=<?= $alternativa->idAlternativa?>&idQuestao=<?= $idQuestao?>" class="btn btn-danger"><i class="fas fa-trash text-white"></i></a>
-				</span>
-			</li>
-		<?php endforeach ?>
-	</ul>
+		<ul class="list-group lista-alternativas">
+			<?php foreach ($lista as $alternativa) : ?>
+				<li class="list-group-item d-flex justify-content-between align-items-center">
+					<?= $alternativa->texto ?>
+					<span class="badge">
+						<button class="btn btn-correta "><i class="fas fa-<?= ($alternativa->correta)?'check':'times'?>"></i></button>
+						<a href="AlternativasController.php?acao=apagar&id=<?= $alternativa->idAlternativa?>&idQuestao=<?= $idQuestao?>" class="btn btn-danger"><i class="fas fa-trash text-white"></i></a>
+					</span>
+				</li>
+			<?php endforeach ?>
+		</ul>
+	</br>
 	<button class="btn btn-dark" data-toggle="modal" data-target="#modalnovo"><i class="fas fa-plus"></i></button>
 </div>
 <!-- Modal Nova alternativa -->

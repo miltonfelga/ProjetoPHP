@@ -24,32 +24,46 @@ class UsuarioDAO{
 			$_SESSION["danger"]= "erro ao apagar usuário";
 		}
 		header("Location: /usuarios");
-}
+	}
 
 	public function inserir(){
 		$sql = "INSERT INTO usuarios VALUES (0, '$this->nome', '$this->email', md5('$this->senha') )";
 		$rs = $this->con->query($sql);
 
-		if ($rs) 
-			header("Location: /usuarios");
-		else 
-			echo $this->con->error;
+		session_start();
+		if ($rs){ 
+			$_SESSION["success"] = "usuário inserido com sucesso";
+		}
+		else {
+			$_SESSION["danger"]= "erro ao inserir usuário";
+		}
+		header("Location: /usuarios");
 	}
 
 	public function editar(){
 		$sql = "UPDATE usuarios SET nome='$this->nome', email='$this->email' WHERE idUsuario=$this->id";
 		$rs = $this->con->query($sql);
-		if ($rs) 
-			header("Location: /usuarios");
-		else 
-			echo $this->con->error;
+		session_start();
+		if ($rs){ 
+			$_SESSION["success"] = "usuário editado com sucesso";
+		}
+		else {
+			$_SESSION["danger"]= "erro ao editar usuário";
+		}
+		header("Location: /usuarios");
 	}
 
 	public function trocarSenha($id, $senha){
 		$sql = "UPDATE usuarios SET senha=md5('$senha') WHERE idUsuario=$id";
 		$rs = $this->con->query($sql);
-		if ($rs) header("Location: /usuarios");
-		else echo $this->con->error;
+		session_start();
+		if ($rs){ 
+			$_SESSION["success"] = "senha alterada com sucesso";
+		}
+		else {
+			$_SESSION["danger"]= "erro ao alterar senha";
+		}
+		header("Location: /usuarios");
 	}
 
 	public function buscar(){
@@ -70,12 +84,12 @@ class UsuarioDAO{
 			session_start();
 			$_SESSION["logado"]=true;
 			header("Location: /usuarios");
-		}else{
-			header("Location: /");
+		}else {
+			header("Location:/?erro=1");
 		}
-		
 	}
-
+	
+	
 	public function sair(){
 		session_start();
 		session_destroy();

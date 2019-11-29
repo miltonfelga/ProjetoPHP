@@ -1,5 +1,5 @@
 <?php 
-require "config.php";
+require_once "config.php";
 
 class AlternativasDAO{
 	public $id;
@@ -9,6 +9,7 @@ class AlternativasDAO{
 
 	private $con;
 
+
 	function __construct(){
 		$this->con = mysqli_connect(DB_SERVER ,DB_USER ,DB_PASS ,DB_NAME);
 	}
@@ -16,27 +17,40 @@ class AlternativasDAO{
 	public function apagar($id, $idQuestao){
 		$sql = "DELETE FROM alternativas WHERE idAlternativa=$id";
 		$rs = $this->con->query($sql);
-		if ($rs) header("Location: \alternativas?questao=$idQuestao");
-		else echo $this->con->error;
+		session_start();
+		if ($rs){ 
+			$_SESSION["success"] = "alternativa excluida com sucesso";
+		}
+		else {
+			$_SESSION["danger"]= "erro ao excluir alternativa";
+		}
+		header("Location: \alternativas?questao=$idQuestao");
 	}
 
 	public function inserir(){
 		$sql = "INSERT INTO alternativas VALUES (0, $this->idQuestao, '$this->texto', '$this->correta')";
 		$rs = $this->con->query($sql);
-
-		if ($rs) 
-			header("Location: \alternativas?questao=$this->idQuestao");
-		else 
-			echo $this->con->error;
+		session_start();
+		if ($rs){ 
+			$_SESSION["success"] = "alternativa inserida com sucesso";
+		}
+		else {
+			$_SESSION["danger"]= "erro ao inserir alternativa";
+		}
+		header("Location: \alternativas?questao=$this->idQuestao");
 	}
 
 	public function editar(){
 		$sql = "UPDATE alternativas SET texto='$this->texto', correta='$this->correta' WHERE idAlternativa=$this->id";
 		$rs = $this->con->query($sql);
-		if ($rs) 
-			header("Location: \alternativas?questao=$id");
-		else 
-			echo $this->con->error;
+		session_start();
+		if ($rs){ 
+			$_SESSION["success"] = "alternativa editada com sucesso";
+		}
+		else {
+			$_SESSION["danger"]= "erro ao editar alternativa";
+		}
+		header("Location: \alternativas?questao=$this->idQuestao");
 	}
 
 

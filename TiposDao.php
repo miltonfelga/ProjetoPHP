@@ -18,7 +18,7 @@ class UsuarioDAO{
 
 	public function inserir(){
 		$sql = "INSERT INTO usuarios VALUES (0,'$this->nome','$this->email',
-					md5('$this->senha') )";
+		md5('$this->senha') )";
 		$rs = $this->con->query($sql);
 		if($rs)
 			header ("Location:/usuarios");
